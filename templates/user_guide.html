@@ -1,0 +1,281 @@
+<html>
+    <body style="text-align: center;">
+        <header>
+            <h1>Team Awesome</h1>
+            <p><strong>Group/Roles:</strong></p>
+            <ul style="text-align: left; width: 25%; margin: 0 auto;">
+                <li>Dev1: Brendan AlberBrendan Albert</li>
+                <li>Dev2: Ian Alvarez</li>
+                <li>Ops: Jayro Alvarez</li>
+            </ul>
+            <p>Check GitHub repo: <a href="https://github.com/jalvarez24/449-Project-1">https://github.com/jalvarez24/449-Project-1</a></p>
+            <h2> User Guide for Microservices Application</h2>
+            <h3>A prototype API for a music microservice.</h3>
+            <div style="text-align: left; width: 25%; margin: 0 auto;">
+                <p>
+                  Now that all services have been started, take a look at the tab named "XSPF Playlist Guide" to
+                  learn how to add to a playlist and retrieve it. Make sure steps in the README.md have been
+                  completed.
+                </p>
+            </div>
+            </p>
+
+
+            <hr>
+            <p style="font-size: 18px;">
+                Now that the database is set up and the four services are up and running, feel free to test the various routes.  Or, see how to run the shell scripts.
+            </p>
+            <hr style="margin-bottom: 0px;"/>
+            <div style="background-color:lightgray; padding: 7px 7px;">
+                <button style="font-size: 12px; border-radius: 5px; padding: 10px; font-family: monospace;" id="scripts" disabled>Shellscripts Guide</button>
+                <button style="font-size: 12px; border-radius: 5px; padding: 10px; font-family: monospace;" id="track">Tracks Guide</button>
+                <button style="font-size: 12px; border-radius: 5px; padding: 10px; font-family: monospace;" id="user">Users Guide</button>
+                <button style="font-size: 12px; border-radius: 5px; padding: 10px; font-family: monospace;" id="descrip">Descriptions Guide</button>
+                <button style="font-size: 12px; border-radius: 5px; padding: 10px; font-family: monospace;" id="xspf">XSPF Playlist Guide</button>
+                <button style="font-size: 12px; border-radius: 5px; padding: 10px; font-family: monospace;" id="playlist">Playlists Guide</button>
+            </div>
+        </header>
+        <hr style="margin-top: 0px;"/>
+        <div style="width:80%; margin:0 auto;">
+            <div id="scriptsDiv" style="display:block;">
+                How to use the shell script(s):
+                <ul style="text-align: left;">
+                    <li style="margin-top: 15px;">To perform a series of POST requests using a shell script to populate all of our API endpoints , run: <span style="background: #ddd; padding: 5px; font-size: 16px; font-family: monospace;">make seedapi</span></li>
+                    <b>May already be done from instructions in README.md</b>
+                </ul>
+            </div>
+            <div id="trackDiv" style="display:none;">
+                Track Microservices:
+                <ul style="text-align: left;">
+                    <li><b>Create</b> a new track, send a POST request in JSON format to: </br><i>http://127.0.0.1:5001/api/v1/resources/musicService/tracks</li>
+                        </br>JSON must have these fields:
+                        <ul>
+                            <li>track_title</li>
+                            <li>album_title</li>
+                            <li>artist</li>
+                            <li>length_seconds</li>
+                            <li>url_media</li>
+                            <li>url_art<i>(Optional)</i></li>
+                        </ul>
+                        </br> <b>Example of a POST curl command: <p></b>curl -v -d '{"track_title" : "MYSONG", "album_title": "MYALBUM", "artist" : "BestArtist", "length_seconds" : "201", "url_media" : "wwww.soundcloud.com/thisSong", "url_art" : "wwww.flickr.com/thisImage"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5001/api/v1/resources/musicService/tracks </p> </br>
+
+                    <li><b>Retrieve</b> a track, go to URL: </br><i>http://127.0.0.1:5001/api/v1/resources/musicService/tracks?track_title=<b>track_title</b></i>
+
+                        </br></br>Replace <b>track_title</b> at end of URL with title of track you'd like to retrieve.</li>
+                        <ul>
+                            <li>If track_title is not known retrieve <b>all</b> tracks by going to URL:</li>
+                            http://127.0.0.1:5001/api/v1/resources/musicService/tracks/all
+                        </ul></br></br>
+
+                    <li><b>Edit</b> a track, send a PUT request in JSON format to: </br><i>http://127.0.0.1:5001/api/v1/resources/musicService/tracks/edit-track</li>
+                    </br>JSON must have these fields:
+                        <ul>
+                            <li>track_title</li>
+                            <li>artist</li>
+                            <li>newTrackTitle</li>
+                            <li>newAlbumTitle</li>
+                            <li>newArtist</li>
+                            <li>newLength</li>
+                            <li>newUrlMedia</li>
+                            <li>newUrlArt</li>
+                        </ul>
+                    </br> <b>Example of a PUT curl command: <p></b>curl -v -d '{"track_title" : "Stan", "artist": "Eminem" , "newTrackTitle" : "NEWSONG", "newAlbumTitle": "NEWESTALBUM", "newArtist" : "NEWBestArtist", "newLength" : "180", "newUrlMedia" : "wwww.soundcloud.com/thisSong", "newUrlArt" : "wwww.flickr.com/thisImage"}' -H "Content-Type: application/json" -X PUT http://127.0.0.1:5001/api/v1/resources/musicService/tracks/edit-track </p> </br>
+
+                    <li><b>Delete</b> a track, send a DELETE request in JSON format to: </br> http://127.0.0.1:5001/api/v1/resources/musicService/tracks</li>
+                    </br>JSON must have these fields:
+                        <ul>
+                            <li>track_title</li>
+                            <li>artist</li>
+                        </ul>
+                    </br> <b>Example of a DELETE curl command: <p></b>curl -v -d '{"track_title" : "Sunflower", "artist": "Post Malone"}' -H "Content-Type: application/json" -X DELETE http://127.0.0.1:5001/api/v1/resources/musicService/tracks</p> </br>
+                </ul>
+            </div>
+            <div id="userDiv" style="display:none;">
+                User Microservices:
+                <ul style="text-align: left;">
+                    <li>To <b>Create a User</b>, send a POST request in JSON format to: <i>http://127.0.0.1:5000/api/v1/resources/musicService/users</i>
+                        </br>Post must have these fields:
+                        <ul>
+                            <li>username</li>
+                            <li>password</li>
+                            <li>display_name</li>
+                            <li>email</li>
+                            <li>homepage_url <i>(Optional)</i></li>
+                        </ul>
+                    </li>
+                    </br>
+                    <li>
+                        To <b>Retrieve a Profile</b>, go to URL: <i>http://127.0.0.1:5000/api/v1/resources/musicService/users?username=<b>user</b></i>
+                        </br>Replace <b>user</b> at end of URL with username of user you'd like to retrieve.
+                    </li>
+                    </br>
+                    <li>
+                        To <b>Delete a User</b>, send a DELETE request in JSON format to: <i>http://127.0.0.1:5000/api/v1/resources/musicService/users</i>
+                        </br>
+                        <b>Post requires a username field.</b>
+                    </li>
+                    </br>
+                    <li>
+                        To <b>Change a User's Password</b>, send a PUT request in JSON format to: <i>http://127.0.0.1:5000/api/v1/resources/musicService/users/change-password</i>
+                        </br>Post must have these fields:
+                        <ul>
+                            <li>username</li>
+                            <li>newpassword</li>
+                        </ul>
+                    </li>
+                    </br>
+                    <li>
+                        To <b>Authenticate a User</b>, send a POST request in JSON format to: <i>http://127.0.0.1:5000/api/v1/resources/musicService/users/authenticate-user</i>
+                        </br>Post must have these fields:
+                        <ul>
+                            <li>username</li>
+                            <li>newpassword</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="descripDiv" style="display:none">
+                Description Microservices:
+                <ul style="text-align: left;">
+                    <li>
+                        To <b>Set a User's Description of a Track</b>, send a POST request in JSON format to: <i>http://127.0.0.1:5002/api/v1/resources/musicService/descriptions</i>
+                        </br>Post must have these fields:
+                        <ul>
+                            <li>username</li>
+                            <li>track_id</li>
+                            <li>description_text</li>
+                        </ul>
+                    </li>
+                    </br>
+                    <li>
+                        To <b>Retrieve a User's Description of a Track</b>, go to URL:
+                        <br>
+                        <i>http://127.0.0.1:5002/api/v1/resources/musicService/descriptions?username=<b>username</b>&track_id=<b>track_id</b></i>
+                        </br>Replace <b>username</b> at end of URL with username of user's description you'd like to retrieve and replace <b>track_id</b> of track_id of the specific track.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div id="spiffDiv" style="display:none">
+                XSPF Microservices:
+                <ul style="text-align: left;">
+                  <b>This is assuming that you know the playlist_id you want to convert.</b></br></br>
+                    <li>
+                        Steps to <b>convert a playlist into an XSPF playlist:</b>
+                        <br></br>
+                        <ul>
+                            <li>Do a <b>GET</b> request to the <b>Tracks Microservice</b>, enter this url in your browser:</li>
+                            <ul>
+                              <li>http://localhost:8000/tracks/all</li>
+                            </ul>
+                            <br></br>
+                            This will show all the tracks available. Find the <b>track_id</b> you would want to add to your playlist.
+                            <br></br>
+                            <li>Open a new terminal window</li>
+                            <br></br>
+                            <li><b>Add a track to your playlist</b> by making a <b>PUT</b> request use this curl command:</li>
+                            <ul>
+                              <li>curl -v -d '{"track_id":"<b>track_id</b>"}' -H "Content-Type: application/json" -X PUT http://127.0.0.1:5300/api/v1/resources/musicService/playlists?playlist_id=<b>playlist_id</b></li>
+                              <br></br>
+                              <li>curl -v -d '{"track_id":"e8474675-ec3d-4931-9f8e-6b5006f09c6a"}' -H "Content-Type: application/json" -X PUT http://127.0.0.1:5300/api/v1/resources/musicService/playlists?playlist_id=2</li>
+                            </ul>
+                            <br></br>
+                            <b>YOU CAN NOW CONVERT THIS PLAYLIST INTO AN XSPF PLAYLIST</b>
+                            <b>Note:</b> You can't have a playlist without a track, it would not work. Make sure to add tracks to the playlist first!
+                            <br></br>
+                            <li>Make a <b>Get</b> request in your browser by entering this url:</li>
+                            <ul>
+                            </br>
+                              <li>http://127.0.0.1:5400/api/v2/resources/musicService/spiff.xspf?playlist_id=<b>playlist_id</b></li>
+                            </br>
+                              <li>For example:</li>
+                              <ul>
+                                <li>http://127.0.0.1:5400/api/v2/resources/musicService/spiff.xspf?playlist_id=2</li>
+                              </ul>
+                            </ul>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div id="playlistDiv" style="display:none">
+                Playlist Microservices:
+                <ul style="text-align: left;">
+                    <li><b>Create</b> a new playlist, send a POST request in JSON format to: </br><i>http://127.0.0.1:5003/api/v1/resources/musicService/playlists</li>
+                    </br>JSON must have these fields:
+                        <ul>
+                            <li>playlist_title</li>
+                            <li>description</li>
+                            <li>username_id</li>
+                        </ul>
+                    </br> <b>Example of a POST curl command: <p></b>curl -v -d '{"playlist_title" : "The Feels Train", "description" : "Curl up and cry.", "username_id" : "ian123"}' -H "Content-Type: application/json" -X POST http://127.0.0.1:5003/api/v1/resources/musicService/playlists</p> </br>
+
+
+                    <li><b>Retrieve</b> a playlist, go to URL: </br><i>http://127.0.0.1:5003/api/v1/resources/musicService/playlists?playlist_title=<b>playlist_title</b></i>
+
+                        </br></br>Replace <b>playlist_title</b> at end of URL with title of playlist you'd like to retrieve.</li>
+                        <ul>
+                            <li>If playlist_title is not known retrieve <b>all</b> playlists by going to URL:</li>
+                            http://127.0.0.1:5003/api/v1/resources/musicService/playlists/all
+                        </ul></br></br>
+
+                     <li><b>Delete</b> a playlist, send a DELETE request in JSON format to: </br> http://127.0.0.1:5003/api/v1/resources/musicService/playlists</li>
+                    </br>JSON must have these fields:
+                        <ul>
+                            <li>playlist_title</li>
+                        </ul>
+                    </br> <b>Example of a DELETE curl command: <p></b>curl -v -d '{"playlist_title": "The Feels Train"}' -H "Content-Type: application/json" -X DELETE http://127.0.0.1:5003/api/v1/resources/musicService/playlists</p> </br>
+
+                    <li>List <b>all</b> playlists, go to URL: </li>
+                    http://127.0.0.1:5003/api/v1/resources/musicService/playlists/all</br></br>
+
+                    <li>Lists playlists created by a particular user</li>
+                    http://127.0.0.1:5003/api/v1/resources/musicService/playlists/user?username_id=ian123</br></br>
+                </ul>
+            </div>
+        </div>
+        <script>
+            let onBut = document.getElementById("scripts");
+            let sBut = document.getElementById("scripts");
+            let tBut = document.getElementById("track");
+            let uBut = document.getElementById("user");
+            let dBut = document.getElementById("descrip");
+            let spiffBut = document.getElementById("xspf");
+            let pBut = document.getElementById("playlist");
+
+            let onDiv = document.getElementById("scriptsDiv");
+            let sDiv = document.getElementById("scriptsDiv");
+            let tDiv = document.getElementById("trackDiv");
+            let uDiv = document.getElementById("userDiv");
+            let dDiv = document.getElementById("descripDiv");
+            let spiffDiv = document.getElementById("spiffDiv");
+            let pDiv = document.getElementById("playlistDiv");
+
+            sBut.onclick = () => { changeView(sBut, sDiv); }
+
+            tBut.onclick = () => { changeView(tBut, tDiv); }
+
+            uBut.onclick = () => { changeView(uBut, uDiv); }
+
+            dBut.onclick = () => { changeView(dBut, dDiv); }
+
+            spiffBut.onclick = () => { changeView(spiffBut, spiffDiv); }
+
+            pBut.onclick = () => { changeView(pBut, pDiv); }
+
+            changeView = (currentBut, currentDiv) => {
+                onBut.disabled = false;
+                onBut = currentBut;
+                onDiv.style.display = "none";
+                onDiv = currentDiv;
+
+                currentBut.disabled = true;
+                currentDiv.style.display = "block";
+            }
+        </script>
+    </body>
+</html>
