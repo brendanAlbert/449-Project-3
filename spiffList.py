@@ -2,6 +2,8 @@
 # Ian Michael Jesu Alvarez
 # CPSC 449- Backend Engineering
 
+# Project-3 Portion by Brendan Albert
+
 import xspf
 import flask
 from flask import request, jsonify, g, make_response, render_template, Response, send_file
@@ -10,6 +12,23 @@ import sqlite3
 import requests
 import json
 import uuid
+
+# Added for Project-3 Memcache
+from pymemcache.client.base import Client
+
+def json_serializer(key, value):
+    if type(value) == str:
+        return value, 1
+    return json.dumps(jsonify(value)), 2
+    # return jsonify(value), 2
+
+def json_deserializer(key, value, flags):
+    if flags == 1:
+        return value.decode('utf-8')
+    if flags == 2:
+        return json.loads(value.decode('utf-8'))
+    raise Exception("Unknown serialization format")
+# client = Client(('localhost', 11211))
 
 # Create XSPF Playlist
 # this will hold the xspf playlist
@@ -86,17 +105,49 @@ def create_spiff():
     # GET INFO OF PLAYLIST INTO THE XSPF PLAYLIST
     # This will hold the json containing playlist_id, playlist_title, description, username_id
     #playlist = requests.get("http://localhost:8000/playlists?playlist_id=", params=payload)
-    playlist = requests.get("http://localhost:8000/playlists?playlist_id=" + playlist_id)
+
+
+    # Since we are using memcache, we check memcache before doing any get requests
+    # is a playlist with this id already cached?
+    client = Client(('localhost', 11211))
+    # serializer=json_serializer, deserializer=json_deserializer
+    cached_playlist = None
+    try:
+        cached_playlist = json.loads(client.get(playlist_id))
+        with open('cached.txt', 'a') as f:
+            f.write('obj retrieved from cache:' + '\n')
+            f.write(str(cached_playlist) + '\n')
+    except TypeError:
+        with open('cached.txt', 'a') as f:
+            f.write(str(cached_playlist) + '\n')
+
+    # Initialize playlist variable here
+    playlist = None
+
+    # if cached_playlist returns None, we do have to fetch the playlist
+    if cached_playlist == None:
+        playlist = requests.get("http://localhost:8000/playlists?playlist_id=" + playlist_id).json()
+        with open('cached.txt', 'a') as f:
+            f.write('obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:' + '\n')
+            f.write(json.dumps(playlist) + '\n')
+        # since the playlist is not cached, we cache it for 120 seconds
+        client.set(str(playlist_id), json.dumps(playlist), expire = 120)
+    else:
+        # the playlist was cached!  So assign it.
+        playlist = cached_playlist
+
     #playlist.json()
     #fetched_playlist_data = json.loads(playlist.json())
-
+    with open('cached.txt', 'a') as f:
+        f.write('playlist.decode '+ '\n')
+        f.write(str(type(playlist)))
     #fetched_playlist_data = playlist.json()
 
     # Set the xspf playlist params with data from requests
-    x.title = playlist.json()[0]['playlist_title']
-    x.annotation = playlist.json()[0]['description']
-    x.creator = playlist.json()[0]['username_id']
-    x.identifier = str(playlist.json()[0]['playlist_id'])
+    x.title = playlist[0]['playlist_title']
+    x.annotation = playlist[0]['description']
+    x.creator = playlist[0]['username_id']
+    x.identifier = str(playlist[0]['playlist_id'])
     # x.title = fetched_playlist_data.playlist_title
     # x.annotation = fetched_playlist_data.description
     # x.creator = fetched_playlist_data.username_id
@@ -128,10 +179,11 @@ def create_spiff():
     # results now has all of the track_ids(songs) in this playlist
     #results = query_db(query, to_filter)
 
-    response = query_db(query, to_filter)
-    with open('debugging.txt', 'a') as f:
-        f.write('\nresponse:\n')
-        f.write(str(response))
+    # THIS query_db WAS FOR TESTING PURPOSES
+    # response = query_db(query, to_filter)
+    # with open('debugging.txt', 'a') as f:
+    #     f.write('\nresponse:\n')
+    #     f.write(str(response))
 
     # Put all of these tracks in the xspf playlist
     for tracks in query_db(query, to_filter):
@@ -141,7 +193,26 @@ def create_spiff():
         with open('debugging.txt', 'a') as f:
             f.write('\ntrackidizzle:\n')
             f.write(str(trackidizzle))
-        track_fetched = requests.get("http://localhost:8000/tracks?track_id=" + str(trackidizzle)).json()
+
+        track_fetched = None
+        # lets check memcached first to see if the track with the given track id (trackidizzle) exists
+        try:
+            track_fetched = client.get(str(trackidizzle))
+            with open('trackidizzledebug.txt', 'a') as f:
+                f.write('\nFetched the following track from memcached:\n')
+                f.write(str(track_fetched))
+        except TypeError as e:
+             with open('trackidizzledebug.txt', 'a') as f:
+                 f.write('\nError fetching track from memcached or doesnt exist:\n')
+                 f.write(str(trackidizzle))
+
+        if track_fetched == None:
+            with open('trackidizzledebug.txt', 'a') as f:
+                f.write('\nPerforming GET REQUEST TO FETCH TRACK:\n')
+                track_fetched = requests.get("http://localhost:8000/tracks?track_id=" + str(trackidizzle)).json()
+                f.write('Track fetched:\n')
+                f.write(str(track_fetched))
+
 
         with open('debugging.txt', 'a') as f:
             f.write('tracks:\n')

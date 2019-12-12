@@ -8,7 +8,6 @@ from flask import request, jsonify, g, make_response, render_template
 import sqlite3
 import uuid
 
-
 app = flask.Flask(__name__)
 app.config.from_envvar('APP_CONFIG')
 
