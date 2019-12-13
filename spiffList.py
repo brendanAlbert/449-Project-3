@@ -180,10 +180,10 @@ def create_spiff():
     #results = query_db(query, to_filter)
 
     # THIS query_db WAS FOR TESTING PURPOSES
-    # response = query_db(query, to_filter)
-    # with open('debugging.txt', 'a') as f:
-    #     f.write('\nresponse:\n')
-    #     f.write(str(response))
+    response = query_db(query, to_filter)
+    with open('debugging.txt', 'a') as f:
+        f.write('\nresponse:\n')
+        f.write(str(response))
 
     # Put all of these tracks in the xspf playlist
     for tracks in query_db(query, to_filter):
@@ -197,7 +197,7 @@ def create_spiff():
         track_fetched = None
         # lets check memcached first to see if the track with the given track id (trackidizzle) exists
         try:
-            track_fetched = client.get(str(trackidizzle))
+            track_fetched = json.loads(client.get(str(trackidizzle)))
             with open('trackidizzledebug.txt', 'a') as f:
                 f.write('\nFetched the following track from memcached:\n')
                 f.write(str(track_fetched))
@@ -210,6 +210,7 @@ def create_spiff():
             with open('trackidizzledebug.txt', 'a') as f:
                 f.write('\nPerforming GET REQUEST TO FETCH TRACK:\n')
                 track_fetched = requests.get("http://localhost:8000/tracks?track_id=" + str(trackidizzle)).json()
+                client.set( str(trackidizzle), json.dumps(track_fetched), expire=120)
                 f.write('Track fetched:\n')
                 f.write(str(track_fetched))
 

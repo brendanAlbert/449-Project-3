@@ -1,0 +1,56 @@
+None
+obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:
+[{"description": "For times to chill.", "playlist_id": 1, "playlist_title": "Chill Playlist", "username_id": "jayro123"}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>None
+obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:
+[{"description": "For times to chill.", "playlist_id": 1, "playlist_title": "Chill Playlist", "username_id": "jayro123"}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>None
+obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:
+[{"description": "For times to chill.", "playlist_id": 1, "playlist_title": "Chill Playlist", "username_id": "jayro123"}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>None
+obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:
+[{"description": "For times to chill.", "playlist_id": 1, "playlist_title": "Chill Playlist", "username_id": "jayro123"}]
+playlist.decode 
+<class 'list'>None
+obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:
+[{"description": "For times to chill.", "playlist_id": 1, "playlist_title": "Chill Playlist", "username_id": "jayro123"}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>None
+obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:
+[{"description": "For times to chill.", "playlist_id": 1, "playlist_title": "Chill Playlist", "username_id": "jayro123"}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>None
+obj retrieved VIA GET REQUEST FROM PLAYLIST ROUTE:
+[{"description": "For times to chill.", "playlist_id": 1, "playlist_title": "Chill Playlist", "username_id": "jayro123"}]
+playlist.decode 
+<class 'list'>obj retrieved from cache:
+[{'description': 'For times to chill.', 'playlist_id': 1, 'playlist_title': 'Chill Playlist', 'username_id': 'jayro123'}]
+playlist.decode 
+<class 'list'>
