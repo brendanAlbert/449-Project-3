@@ -1,10 +1,8 @@
-##############################################
 # Version  of Project With Scylla Issues:
-##############################################
-#Issues for Dev1 (Jayro Alvarez) with running
-#any post requests. Flask keeps reverting back
-#to using Flask 2.7. Is able to retrieve from
-#db but fails to POST anything.
+Issues for Dev1 (Jayro Alvarez) with running
+any post requests. Flask keeps reverting back
+to using Flask 2.7. Is able to retrieve from
+db but fails to POST anything.
 
 #Schema Used to initialize scyllaDB still functional
 #and located in api.py
