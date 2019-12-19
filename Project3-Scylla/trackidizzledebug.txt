@@ -1,0 +1,31 @@
+
+Fetched the following track from memcached:
+{'album_title': 'W:/2016ALBUM/', 'artist': 'deadmau5', 'length_seconds': 120, 'track_id': 'ae900363-d028-4316-be99-9d1f3279ad37', 'track_title': 'Let Go Feat. Grabbitz', 'url_art': None, 'url_media': 'http://localhost:8000/media/LetGoFeat.Grabbitz_deadmau5.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'W:/2016ALBUM/', 'artist': 'deadmau5', 'length_seconds': 120, 'track_id': 'ae900363-d028-4316-be99-9d1f3279ad37', 'track_title': 'Let Go Feat. Grabbitz', 'url_art': None, 'url_media': 'http://localhost:8000/media/LetGoFeat.Grabbitz_deadmau5.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
+Error fetching track from memcached or doesnt exist:
+ae900363-d028-4316-be99-9d1f3279ad37
+Performing GET REQUEST TO FETCH TRACK:
+Track fetched:
+{'album_title': 'W:/2016ALBUM/', 'artist': 'deadmau5', 'length_seconds': 120, 'track_id': 'ae900363-d028-4316-be99-9d1f3279ad37', 'track_title': 'Let Go Feat. Grabbitz', 'url_art': None, 'url_media': 'http://localhost:8000/media/LetGoFeat.Grabbitz_deadmau5.mp3'}
+Error fetching track from memcached or doesnt exist:
+818e8869-3131-4b2a-be28-9c1c20844984
+Performing GET REQUEST TO FETCH TRACK:
+Track fetched:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'W:/2016ALBUM/', 'artist': 'deadmau5', 'length_seconds': 120, 'track_id': 'ae900363-d028-4316-be99-9d1f3279ad37', 'track_title': 'Let Go Feat. Grabbitz', 'url_art': None, 'url_media': 'http://localhost:8000/media/LetGoFeat.Grabbitz_deadmau5.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
+Fetched the following track from memcached:
+{'album_title': 'Vol. 3... Life and Times of S. Carter', 'artist': 'Jay-Z', 'length_seconds': 140, 'track_id': '818e8869-3131-4b2a-be28-9c1c20844984', 'track_title': 'Big Pimpin', 'url_art': None, 'url_media': 'http://localhost:8000/media/BigPimpin_JayZ.mp3'}
