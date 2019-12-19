@@ -6,7 +6,7 @@
 2. Dev2. Brendan Albert
 3. Ops   Ian Alvarez
 
-Check *PerformanceTimings.pdf* to see performance tests that was done to verify the use of cache
+Check **PerformanceTimings.pdf** to see performance tests that was done to verify the use of cache
 
 
 
