@@ -1,3 +1,10 @@
+############################################################
+#This version of project 3 can successfully test cached
+#Playlists,and documents the speed at which playlists are
+#downloaded when already in the cache vs. when not.
+#Dev1 functionality missing, but partial implementation and
+#connections in separate directory labeled: 'Project3-Scylla'
+############################################################
 
 # 449 Project 3: Music Microservices
 ## ScyllaDB, Memcached
